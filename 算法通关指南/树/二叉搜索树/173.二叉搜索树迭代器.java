@@ -1,4 +1,4 @@
-package 算法通关指南.二叉搜索树;
+package 算法通关指南.树.二叉搜索树;
 /*
  * @lc app=leetcode.cn id=173 lang=java
  *

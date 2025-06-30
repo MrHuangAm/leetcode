@@ -1,12 +1,12 @@
-package 算法通关指南.二叉搜索树;
+package 算法通关指南.树.二叉搜索树;
+
 /*
- * @lc app=leetcode.cn id=700 lang=java
+ * @lc app=leetcode.cn id=701 lang=java
  *
- * [700] 二叉搜索树中的搜索
+ * [701] 二叉搜索树中的插入操作
  */
 
 // @lc code=start
-
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -35,11 +35,17 @@ class TreeNode {
     }
 }
 class Solution {
-    public TreeNode searchBST(TreeNode root, int val) {
-        if(root == null) return null;
-        if(val == root.val) return root;
-        else if(val > root.val) return searchBST(root.right, val);
-        else return searchBST(root.left, val);
+    public TreeNode insertIntoBST(TreeNode root, int val) {
+        if(root == null) return new TreeNode(val);
+        insert(root,val);
+        return root;
+    }
+    public void insert(TreeNode root, int val){
+        if(root.left == null && root.val > val) root.left = new TreeNode(val);
+        if(root.right == null && root.val < val) root.right = new TreeNode(val);
+        if(root.left != null && root.val > val) insert(root.left, val);
+        if(root.right !=null && root.val < val) insert(root.right, val);
+        return ;
     }
 }
 // @lc code=end

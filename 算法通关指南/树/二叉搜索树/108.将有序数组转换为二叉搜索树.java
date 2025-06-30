@@ -1,8 +1,9 @@
-package 算法通关指南.二叉搜索树;
+package 算法通关指南.树.二叉搜索树;
+
 /*
- * @lc app=leetcode.cn id=98 lang=java
+ * @lc app=leetcode.cn id=108 lang=java
  *
- * [98] 验证二叉搜索树
+ * [108] 将有序数组转换为二叉搜索树
  */
 
 // @lc code=start
@@ -34,17 +35,16 @@ class TreeNode {
     }
 }
 class Solution {
-    public boolean isValidBST(TreeNode root) {
-        // 使用Long类型避免Integer边界值问题
-        return isValid(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return buildTree(nums, 0, nums.length-1);
     }
-    public boolean isValid(TreeNode root, long leftBound, long rigthbound){
-        if(root == null) return true;
-        // （BST要求左<根<右）
-        if(! (root.val > leftBound && root.val < rigthbound)){
-            return false;
-        }
-        return isValid(root.left, leftBound, root.val) && isValid(root.right, root.val, rigthbound);
+    public TreeNode buildTree(int nums[],int left, int right){
+        if(left > right) return null;
+        int mid = left + (right-left)/2;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = buildTree(nums, left, mid-1);
+        root.right = buildTree(nums, mid +1 , right);
+        return root;
     }
 }
 // @lc code=end
