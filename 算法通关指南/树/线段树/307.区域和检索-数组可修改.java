@@ -1,3 +1,5 @@
+package 算法通关指南.树.线段树;
+
 /*
  * @lc app=leetcode.cn id=307 lang=java
  *
